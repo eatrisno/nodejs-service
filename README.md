@@ -32,8 +32,8 @@ CRUD apis are secured by authorization header token (JWT), expired every 60m.
 To get authorization token we simply get from this url: 
 
 ## GET OK
-GET ```http://localhost:8000/ok```
-CURL ```curl http://localhost:8000/ok```
+GET ```https://liko-nodejs-service.herokuapp.com/ok```
+CURL ```curl https://liko-nodejs-service.herokuapp.com/ok```
 Response:
 ```
 {
@@ -42,8 +42,8 @@ Response:
 ```
 
 ## GET HEALTH
-GET ```http://localhost:8000/health```
-CURL ```curl http://localhost:8000/health```
+GET ```https://liko-nodejs-service.herokuapp.com/health```
+CURL ```curl https://liko-nodejs-service.herokuapp.com/health```
 Response:
 ```
 {
@@ -56,8 +56,8 @@ Response:
 ```
 
 ## GET TOKEN
-GET ```http://localhost:8000/token```
-CURL ```curl http://localhost:8000/token```
+GET ```https://liko-nodejs-service.herokuapp.com/token```
+CURL ```curl https://liko-nodejs-service.herokuapp.com/token```
 Response:
 ```
 {
@@ -66,8 +66,8 @@ Response:
 }
 ```
 
-## POST USER
-POST ```http://localhost:8000/user```
+## CREATE USER
+POST ```https://liko-nodejs-service.herokuapp.com/user```
 CURL 
 ```
 curl --location 
@@ -82,3 +82,80 @@ Response:
     "success": true
 }
 ```
+
+## GET USER BY ACCOUT
+GET ```https://liko-nodejs-service.herokuapp.com/user/account?accountNumber=123```
+CURL
+```
+curl --location --request GET 'https://liko-nodejs-service.herokuapp.com/user/account?accountNumber=123' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRlIjoiMjAyMS0wNy0xMFQyMDozMToxOC4xNzlaIiwiaWF0IjoxNjI1OTQ5MDc4LCJleHAiOjE2MjU5NTI2Nzh9.Cd0mNqklpEBQ0EKWEZ38IFYKv-JyBzkgCEdefca0kAM'
+```
+Response:
+```
+
+
+{
+    "success": true,
+    "user": {
+        "_id": "60ea03d51d12aa0015be99f1",
+        "user": "user",
+        "email": "user@mail.com",
+        "accountNumber": 123,
+        "identityNumber": 123
+    }
+}
+```
+
+## GET USER BY IDENTITY NUMBER
+GET ```https://liko-nodejs-service.herokuapp.com/user/identity?identityNumber=123```
+CURL
+```
+curl --location --request GET 'https://liko-nodejs-service.herokuapp.com/user/identity?identityNumber=123' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRlIjoiMjAyMS0wNy0xMFQyMToxNjoyNy40ODJaIiwiaWF0IjoxNjI1OTUxNzg3LCJleHAiOjE2MjU5NTUzODd9.Pjnjn1Mko_BxO9VN4YQfOCCYPdJ82kUZiI3nqcjxFt8'
+```
+Response:
+```
+{
+    "success": true,
+    "user": {
+        "_id": "60ea03d51d12aa0015be99f1",
+        "user": "user",
+        "email": "user@mail.com",
+        "accountNumber": 123,
+        "identityNumber": 123
+    }
+}
+```
+
+
+## UPDATE USER BY ID
+PUT ```https://liko-nodejs-service.herokuapp.com/user/60ea03d51d12aa0015be99f1```
+CURL
+```
+curl --location --request PUT 'https://liko-nodejs-service.herokuapp.com/user/60ea03d51d12aa0015be99f1' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRlIjoiMjAyMS0wNy0xMFQyMDozMToxOC4xNzlaIiwiaWF0IjoxNjI1OTQ5MDc4LCJleHAiOjE2MjU5NTI2Nzh9.Cd0mNqklpEBQ0EKWEZ38IFYKv-JyBzkgCEdefca0kAM' \
+--header 'Content-Type: application/json' \
+--data-raw '{"user":"newtest","email":"newtest@gmail.com"}'
+```
+Response:
+```
+{
+    "success": true
+}
+```
+
+## DELETE USER BY ID
+DELETE ```https://liko-nodejs-service.herokuapp.com/user/60e9e44b255e9b9de304f4eb```
+CURL
+```
+curl --location --request DELETE 'https://liko-nodejs-service.herokuapp.com/user/60e9e44b255e9b9de304f4eb' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRlIjoiMjAyMS0wNy0xMFQxNzozNDoyOC4xNzFaIiwiaWF0IjoxNjI1OTM4NDY4LCJleHAiOjE2MjU5NDIwNjh9.kCGASaWW412MAqRVTPeoiQr6j0WotBWXMcZFbLFv_Jw'
+```
+Response:
+```
+{
+    "success": true
+}
+```
+
+
