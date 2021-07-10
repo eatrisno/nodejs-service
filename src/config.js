@@ -34,5 +34,3 @@ export default {
         }
     }
 };
-
-mongodb+srv://nodejs:<password>@nodejs-service.ytdwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
