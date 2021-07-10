@@ -8,7 +8,7 @@ export default {
   env,
   isDev: env === "development",
 
-  port: "PORT" in process.env ? (Number(process.env.PORT) + ("NODE_APP_INSTANCE" in process.env ? Number(process.env.NODE_APP_INSTANCE) : 0)) : 8000,
+  port: process.env.PORT || 8000,
   host: process.env.HOST || (env === "development" ? "0.0.0.0" : "127.0.0.1"),
 
   server: {
@@ -22,7 +22,7 @@ export default {
     expired: process.env.JWT_EXPIRED || "60m",
   },
   mongo: {
-        enable: false,
+        enable: process.env.MONGO_ENABLE || true ,
         mongoUri: process.env.MONGO_URI || "mongodb://root:password@127.0.0.1:27017/nodejs_service?authSource=admin",
   },
   redis:{
@@ -34,3 +34,5 @@ export default {
         }
     }
 };
+
+mongodb+srv://nodejs:<password>@nodejs-service.ytdwh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
