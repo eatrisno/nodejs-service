@@ -31,6 +31,8 @@ export default {
             host: process.env.REDIS_HOST || "127.0.0.1",
             port: process.env.REDIS_PORT || 6379,
             expired: process.env.REDIS_EXPIRED || 3600,
-        }
+        },
+        username: process.env.REDIS_USERNAME,
+        password: process.env.REDIS_PASSWORD
     }
 };
