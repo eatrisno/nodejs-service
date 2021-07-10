@@ -41,7 +41,7 @@ function getRedisVal(redisKey) {
 }
 
 function setRedis(redisKey, val) {
-  cacheSrv.client.set(redisKey, val, "EX", config.redisCache.expired);
+  cacheSrv.client.set(redisKey, val, "EX", config.redis.redisCache.expired);
 }
 
 function delRedis(redisKey) {
