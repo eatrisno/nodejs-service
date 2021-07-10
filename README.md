@@ -32,7 +32,7 @@ CRUD apis are secured by authorization header token (JWT), expired every 60m.
 To get authorization token we simply get from this url: 
 
 ## GET OK
-GET ```https://liko-nodejs-service.herokuapp.com/ok```
+GET [```https://liko-nodejs-service.herokuapp.com/ok```](https://liko-nodejs-service.herokuapp.com/ok)
 CURL ```curl https://liko-nodejs-service.herokuapp.com/ok```
 Response:
 ```
@@ -42,7 +42,7 @@ Response:
 ```
 
 ## GET HEALTH
-GET ```https://liko-nodejs-service.herokuapp.com/health```
+GET [```https://liko-nodejs-service.herokuapp.com/health```](https://liko-nodejs-service.herokuapp.com/health)
 CURL ```curl https://liko-nodejs-service.herokuapp.com/health```
 Response:
 ```
