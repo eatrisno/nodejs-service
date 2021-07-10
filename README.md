@@ -10,6 +10,11 @@ Redis
 MongoDB 4+
 ```
 
+## PRODUCTION ON HEROKU
+```
+https://liko-nodejs-service.herokuapp.com/health
+```
+
 ## Dir Map
 **src/** - Source code, ES6+<br>
 **dist/** - Build by babel<br>
