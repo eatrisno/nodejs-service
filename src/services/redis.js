@@ -12,11 +12,6 @@ function initRedis(config) {
 
     const client = redis.createClient(config.redis.redisCache);
 
-    if(config.redis.username){
-        client['auth'] = null;
-        client.send_command('AUTH', [config.redis.username, config.redis.password]);
-    }
-
     client.on("error", (err) => {
       console.error("Redis error: ", err);
 
