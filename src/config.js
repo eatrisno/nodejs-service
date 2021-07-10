@@ -26,7 +26,7 @@ export default {
         mongoUri: process.env.MONGO_URI || "mongodb://root:password@127.0.0.1:27017/nodejs_service?authSource=admin",
   },
   redis:{
-        enable: false,
+        enable: process.env.REDIS_ENABLE || true ,
         redisCache: {
             host: process.env.REDIS_HOST || "127.0.0.1",
             port: process.env.REDIS_PORT || 6379,
