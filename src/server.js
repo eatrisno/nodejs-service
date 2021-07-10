@@ -4,8 +4,14 @@ import bodyParser from "body-parser";
 import express from "express";
 import addRequestId from "express-request-id";
 
+import "./models/index";
+
 import config from "./config";
 import router from "./routes/index";
+
+import svc_auth from "./services/auth";
+import svc_mongodb from "./services/mongodb";
+import svc_redis from "./services/redis";
 
 process.title = config.server.name;
 
@@ -23,13 +29,28 @@ server.use("*", (req, res, next) => {
   return next();
 });
 
+server.use(svc_auth.valToken);
 server.use("", router);
 
 async function init() {
   console.log("Launching node app");
 
+  try {
+    await svc_mongodb.init(config);
+  } catch (e) {
+    const error = "Mongoose - Connection error";
+    console.error(error, e);
+  }
+
+  try {
+    await svc_redis.init(config);
+  } catch (e) {
+    const error = "Redis - Connection error";
+    console.error(error, e);
+  }
   const serverInstance = server.listen(config.port, config.host, () => {
-    console.log(`${config.server.name.toUpperCase()} v${config.server.version} listening at ${config.host}:${config.port}`);
+    console.log(`${config.server.name.toUpperCase()} v${config.server.version}`);
+    console.log(`listening at ${config.host}:${config.port}`);
   });
 
   process.on("SIGINT", () => {

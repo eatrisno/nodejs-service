@@ -1,0 +1,33 @@
+version: '3'
+services:
+    redis:
+        image: redis:alpine
+        restart: always
+        ports:
+            - "6379:6379"
+    mongo:
+        image: mongo:4
+        restart: always
+        environment:
+            MONGO_DATA_DIR: /data/db
+            MONGO_LOG_DIR: /dev/null
+            MONGO_INITDB_ROOT_USERNAME: 'root'
+            MONGO_INITDB_ROOT_PASSWORD: 'password'
+            MONGO_INITDB_DATABASE: 'nodejs_service'
+        volumes:
+            - mongo-data:/data/db
+        ports:
+            - "27017:27017"
+    mongo-express:
+        image: mongo-express
+        restart: always
+        environment:
+            ME_CONFIG_MONGODB_URL: 'mongodb://root:password@mongo:27017'
+            ME_CONFIG_MONGODB_ADMINUSERNAME: 'root'
+            ME_CONFIG_MONGODB_ADMINPASSWORD: 'express'
+        ports:
+            - 8081:8081
+        links:
+            - mongo
+volumes:
+    mongo-data:

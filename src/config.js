@@ -15,5 +15,15 @@ export default {
     name: process.env.SERVER_NAME || pack.name,
     version: process.env.SERVER_VERSION || pack.version,
   },
-
+  jwt: {
+    secret: process.env.JWT_SECRET || "password",
+    algorithm: process.env.JWT_ALGORITHM || "HS256",
+    expired: process.env.JWT_EXPIRED || "60m",
+  },
+  mongoUri: process.env.MONGO_URI || "mongodb://root:password@127.0.0.1:27017/nodejs_service?authSource=admin",
+  redisCache: {
+    host: process.env.REDIS_HOST || "127.0.0.1",
+    port: process.env.REDIS_PORT || 6379,
+    expired: process.env.REDIS_EXPIRED || 3600,
+  }
 };
