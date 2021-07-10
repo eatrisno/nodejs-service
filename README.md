@@ -56,7 +56,7 @@ Response:
 ```
 
 ## GET TOKEN
-GET ```https://liko-nodejs-service.herokuapp.com/token```
+GET [```https://liko-nodejs-service.herokuapp.com/token```](https://liko-nodejs-service.herokuapp.com/token)
 CURL ```curl https://liko-nodejs-service.herokuapp.com/token```
 Response:
 ```
