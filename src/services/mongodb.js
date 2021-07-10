@@ -20,7 +20,7 @@ function init(cfg) {
     mongoose.set("useCreateIndex", true);
     mongoose.set("useFindAndModify", false);
     mongoose.set("useUnifiedTopology", true);
-    mongoose.connect(config.mongoUri);
+    mongoose.connect(config.mongo.mongoUri);
   }
 
   db.on("connected", () => {

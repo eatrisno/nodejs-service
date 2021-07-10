@@ -34,20 +34,22 @@ server.use("", router);
 
 async function init() {
   console.log("Launching node app");
-
-  try {
-    await svc_mongodb.init(config);
-  } catch (e) {
-    const error = "Mongoose - Connection error";
-    console.error(error, e);
-  }
-
-  try {
-    await svc_redis.init(config);
-  } catch (e) {
-    const error = "Redis - Connection error";
-    console.error(error, e);
-  }
+    if(config.mongo.enable){
+        try {
+            await svc_mongodb.init(config);
+        } catch (e) {
+            const error = "Mongoose - Connection error";
+            console.error(error, e);
+        }
+    }
+    if(config.redis.enable){
+        try {
+            await svc_redis.init(config);
+        } catch (e) {
+            const error = "Redis - Connection error";
+            console.error(error, e);
+        }
+    }
   const serverInstance = server.listen(config.port, config.host, () => {
     console.log(`${config.server.name.toUpperCase()} v${config.server.version}`);
     console.log(`listening at ${config.host}:${config.port}`);

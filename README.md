@@ -65,7 +65,11 @@ Response:
 POST ```http://localhost:8000/user```
 CURL 
 ```
-curl --location --request POST 'localhost:8000/user' --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRlIjoiMjAyMS0wNy0xMFQxOTozNzoxMi41MTlaIiwiaWF0IjoxNjI1OTQ1ODMyLCJleHAiOjE2MjU5NDk0MzJ9.uMQ86q1lRWPwiJ186tkS40eLQFSaO72Pzcll4APQ9sM' --header 'Content-Type: application/json' --data-raw '{"user":"user","email":"user@mail.com","accountNumber":123,"identityNumber":123}'
+curl --location 
+--request POST 'localhost:8000/user' 
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRlIjoiMjAyMS0wNy0xMFQxOTozNzoxMi41MTlaIiwiaWF0IjoxNjI1OTQ1ODMyLCJleHAiOjE2MjU5NDk0MzJ9.uMQ86q1lRWPwiJ186tkS40eLQFSaO72Pzcll4APQ9sM' 
+--header 'Content-Type: application/json' 
+--data-raw '{"user":"user","email":"user@mail.com","accountNumber":123,"identityNumber":123}'
 ```
 Response:
 ```

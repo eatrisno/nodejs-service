@@ -10,7 +10,7 @@ function initRedis(config) {
       redis.debug_mode = true;
     }
 
-    const client = redis.createClient(config.redisCache);
+    const client = redis.createClient(config.redis.redisCache);
     client.on("error", (err) => {
       console.error("Redis error: ", err);
 
